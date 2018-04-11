@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const app = express();
 
-
+const port = process.env.PORT || 3000;
 hbs.registerPartials(__dirname+'/views/partials');
 app.set('view engine','hbs');
 app.use(express.static(__dirname+"/public"));
@@ -31,7 +31,7 @@ app.use((req,res,next)=>{
 hbs.registerHelper('capitalize',(text1)=>{
     return text1.toUpperCase();
 })
-app.set("port",3000);
+
 app.get('/', (req, res)=>{
     // res.send("<h1>hello world<h1>");
     // res.json({
@@ -50,6 +50,6 @@ app.get('/about',(req, res)=>{
 
 });
 
-app.listen(app.get("port"),()=>{
-    console.log(`server is listening at port ${app.get("port")}`);
+app.listen(port,()=>{
+    console.log(`server is listening at port ${port}`);
 });
